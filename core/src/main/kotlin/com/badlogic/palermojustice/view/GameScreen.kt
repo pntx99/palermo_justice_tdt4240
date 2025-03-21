@@ -13,13 +13,13 @@ class MainScreen : Screen {
 
     override fun show() {
         batch = SpriteBatch()
-        img = Texture("resources/images/sample.png") // Assicurati che l'immagine esista
+        img = Texture("resources/images/sample.png")
     }
 
     override fun render(delta: Float) {
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT) // Pulizia dello schermo
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
         batch.begin()
-        batch.draw(img, 100f, 100f) // Disegna l'immagine a (100,100)
+        batch.draw(img, 100f, 100f)
         batch.end()
     }
 
