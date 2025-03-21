@@ -9,7 +9,7 @@ class Main : ApplicationAdapter() {
     //private lateinit var player: Player
 
     /*override fun create() {
-        player = Player("Detective", 100) // Sostituisci con il costruttore della tua classe Player
+        player = Player("ISPETTORE", 100)
         println("Gioco avviato! Il giocatore è ${player.name} con ${player.health} HP.")
     }*/
 
