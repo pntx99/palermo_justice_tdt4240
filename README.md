@@ -32,7 +32,7 @@ Useful Gradle tasks and flags:
 - `test`: runs unit tests (if any).
 
 - ## Developments
-- @pantaleo -> addedd Player.kt class to list the roles
+- @pantaleo -> addedd Player.kt class to list the roles (core/src/main/kotlin/com/badlogic/palermojustice/model/Player.kt)
 
 Note that most tasks that are not specific to a single project can be run with `name:` prefix, where the `name` should be replaced with the ID of a specific project.
 For example, `core:clean` removes `build` folder only from the `core` project.
