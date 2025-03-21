@@ -1,4 +1,4 @@
-package com.mygame.model
+package com.mygame.model.com.badlogic.palermojustice
 
 enum class Role { PAESANO, MAFIOSO, ISPETTORE, SGARRISTA, PRETE, PENTITO, TRUFFATORE }
 
