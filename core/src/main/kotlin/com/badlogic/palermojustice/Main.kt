@@ -31,14 +31,16 @@ class Main : ApplicationAdapter() {
 
         batch.begin()
 
-        val text = "Hello, Mafia Game!"
-        layout.setText(font, text)
+        val title = "Palermo Justice"
+        layout.setText(font, title)
 
         val textWidth = layout.width
         val textHeight = layout.height
 
         val x = (Gdx.graphics.width - textWidth) / 2
         val y = (Gdx.graphics.height + textHeight) / 2
+
+        font.getData().setScale(6F, 6F);
 
         font.draw(batch, layout, x, y)
 
