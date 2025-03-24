@@ -19,7 +19,7 @@ class GameScreen : Screen {
 
     override fun show() {
         Gdx.input.inputProcessor = stage
-
+//
         font = BitmapFont()
         font.data.setScale(3f)
 

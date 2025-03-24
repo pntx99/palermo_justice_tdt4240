@@ -8,3 +8,4 @@ class Main : Game() {
         setScreen(GameScreen()) // Imposta la schermata iniziale del gioco
     }
 }
+//
