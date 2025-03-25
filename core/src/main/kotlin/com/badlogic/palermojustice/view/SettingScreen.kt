@@ -14,8 +14,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport
 
 enum class Language(val code: String) {
     ENGLISH("en"),
-    SPANISH("es"),
-    FRENCH("fr")
+    NORWEGIAN("no")
 }
 
 class SettingsScreen : Screen {
@@ -48,6 +47,7 @@ class SettingsScreen : Screen {
 
         // Create UI elements
         val titleLabel = Label("Settings", skin)
+        var backButton = TextButton("Back", skin)
 
         languageSelectBox = SelectBox(skin)
         languageSelectBox.setItems(*Language.values())
@@ -73,10 +73,12 @@ class SettingsScreen : Screen {
         table.add(Label("Language", skin)).left().row()
         table.add(languageSelectBox).padBottom(20f).fillX().row()
         table.add(darkModeCheckBox).padBottom(20f).left().row()
+        table.add(backButton)
     }
 
     override fun render(delta: Float) {
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f) // Black background
+        Gdx.gl.glClearColor(1f, 1f, 1f, 1f)
+
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         stage.act(delta)
