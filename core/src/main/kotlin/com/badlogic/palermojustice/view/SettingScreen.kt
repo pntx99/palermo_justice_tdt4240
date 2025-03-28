@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener
 import com.badlogic.gdx.utils.viewport.ScreenViewport
+import com.badlogic.palermojustice.Main
+
 //import com.badlogic.palermojustice.SettingsManager
 
 enum class Language(val code: String) {
@@ -67,6 +69,13 @@ class SettingsScreen : Screen {
 //                SettingsManager.saveSettings()
 //            }
 //        })
+
+        //When pressed, backButton (go back) redirects to home screen
+        backButton.addListener(object : ChangeListener() {
+            override fun changed(event: ChangeEvent, actor: Actor) {
+                Main.instance.setScreen(HomeScreen())
+            }
+        })
 
         // Add UI elements to the table
         table.add(titleLabel).padBottom(50f).row()
