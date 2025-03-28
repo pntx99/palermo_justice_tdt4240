@@ -72,7 +72,7 @@ class HomeScreen : Screen {
             val rolesButton = TextButton("Roles", skin)
             rolesButton.addListener(object : ChangeListener() {
                 override fun changed(event: ChangeEvent, actor: Actor) {
-                    //Main.instance.setScreen(add here)
+                    Main.instance.setScreen(RolesScreen())
                 }
             })
 
