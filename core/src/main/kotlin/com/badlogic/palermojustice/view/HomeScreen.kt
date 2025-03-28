@@ -17,40 +17,29 @@ class HomeScreen : Screen {
     private lateinit var skin: Skin
 
     override fun show() {
-        // Crea lo stage per gestire elementi UI
+
         stage = Stage(ScreenViewport())
         Gdx.input.inputProcessor = stage
 
-        // Carica lo skin (assicurati che "comic-ui.json" sia disponibile o usa un altro skin)
         skin = Skin(Gdx.files.internal("comic-ui.json"))
 
-        // Crea l'interfaccia utente
         createUI()
     }
 
     private fun createUI() {
-        // Tabella principale che occuperà tutto lo schermo
+        // main table for the entire screen
         val mainTable = Table()
         mainTable.setFillParent(true)
         stage.addActor(mainTable)
 
-        // Tabella per il titolo e icona impostazioni
+        // title table
         val headerTable = Table()
         val titleLabel = Label("Palermo Justice", skin, "title")
         titleLabel.setAlignment(Align.left)
 
-        // Pulsante impostazioni in alto a destra
-        val settingsButton = TextButton("⚙", skin)
-        settingsButton.addListener(object : ChangeListener() {
-            override fun changed(event: ChangeEvent, actor: Actor) {
-                // Naviga alla schermata delle impostazioni
-                // game.setScreen(SettingsScreen())
-            }
-        })
-
         headerTable.add(titleLabel).expandX().align(Align.left)
-        headerTable.add(settingsButton).padRight(10f)
 
+        // try-catch to handle assets errors
         try {
             val fileHandle = Gdx.files.internal("godfather.jpg")
             Gdx.app.log("DEBUG", "File exists: " + fileHandle.exists())
@@ -58,35 +47,32 @@ class HomeScreen : Screen {
 
             val godfatherTexture = Texture(fileHandle)
             val godfatherImage = Image(godfatherTexture)
-            // resto del codice...
         } catch (e: Exception) {
             Gdx.app.error("ERROR", "Exception loading image", e)
-            // Usa un placeholder invece dell'immagine
             val placeholder = Label("Il Padrino", skin)
-            // resto del codice sostituendo godfatherImage con placeholder...
 
 
-            // Pulsanti principali
+            // main buttons
             val createGameButton = TextButton("Create Game", skin)
             createGameButton.addListener(object : ChangeListener() {
                 override fun changed(event: ChangeEvent, actor: Actor) {
-                    // Gestisci la creazione del gioco
+                    Main.instance.setScreen(CreateGameScreen())
                 }
             })
 
             val joinGameButton = TextButton("Join Game", skin)
             joinGameButton.addListener(object : ChangeListener() {
                 override fun changed(event: ChangeEvent, actor: Actor) {
-                    // Gestisci l'unione al gioco
+                    Main.instance.setScreen(JoinGameScreen())
                 }
             })
 
-            // Tabella inferiore per i pulsanti "Roles" e "Settings"
+            //bottom table for roles and settings
             val bottomTable = Table()
             val rolesButton = TextButton("Roles", skin)
             rolesButton.addListener(object : ChangeListener() {
                 override fun changed(event: ChangeEvent, actor: Actor) {
-                    // Naviga alla schermata dei ruoli
+                    //Main.instance.setScreen(add here)
                 }
             })
 
@@ -100,27 +86,25 @@ class HomeScreen : Screen {
             bottomTable.add(rolesButton).padRight(20f)
             bottomTable.add(settingsButtonBottom)
 
-            // Aggiungi tutti gli elementi alla tabella principale
+            //put all elements in the main table
             mainTable.add(headerTable).fillX().padTop(10f).row()
             mainTable.add(placeholder).size(200f, 200f).padTop(20f).row()
             mainTable.add(createGameButton).width(250f).height(60f).padTop(30f).row()
             mainTable.add(joinGameButton).width(250f).height(60f).padTop(20f).row()
             mainTable.add(bottomTable).padTop(40f).padBottom(20f).row()
 
-            // Configura gli stili per migliorare l'aspetto
-            createGameButton.pad(10f)
-            joinGameButton.pad(10f)
-            rolesButton.pad(10f)
-            settingsButtonBottom.pad(10f)
+            //style and aspect
+            createGameButton.pad(20f)
+            joinGameButton.pad(20f)
+            rolesButton.pad(20f)
+            settingsButtonBottom.pad(20f)
         }
     }
 
     override fun render(delta: Float) {
-        // Pulisci lo schermo con un colore di sfondo
         Gdx.gl.glClearColor(0.9f, 0.9f, 0.9f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-        // Aggiorna e disegna lo stage
         stage.act(delta)
         stage.draw()
     }
